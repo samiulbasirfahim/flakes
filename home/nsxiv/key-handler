@@ -1,0 +1,31 @@
+while read file; do
+    case "$1" in
+    "d")
+        mkdir ~/.trash &
+        mv "$file" ~/.trash/ &
+        ;;
+
+    "w")
+        setsid set-wallpaper "$file"
+        ;;
+
+    "s")
+        mkdir ~/pix/safe/ &
+        mv "$file" ~/pix/safe/
+        ;;
+
+    "m")
+        mkdir ~/pix/wallpapers/ &
+        mv "$file" ~/pix/wallpapers/
+        ;;
+    "r")
+        convert -rotate 90 "$file" "$file"
+        ;;
+    "C-r")
+        convert -rotate -90 "$file" "$file"
+        ;;
+    "C-c")
+        echo -n "$file" | xclip -selection clipboard
+        ;;
+    esac
+done

@@ -1,0 +1,25 @@
+/* customize things here */
+:root {{
+
+	/* background colors */
+	--bg-0: {background}; /* main background color. */
+    --bg-1: #1d2021; /* background color for secondary elements like code blocks, embeds, etc. */
+	--bg-2: #3c3836; /* color of neutral buttons. */
+	--bg-3: #504945; /* color of neutral buttons when hovered. */
+
+
+	/* text colors */
+	--txt-dark: var(--bg-0); /* color of dark text on colored backgrounds. */
+	--txt-link: var(--aqua); /* color of links. */
+	--txt-0: {foreground}; /* color of bright/white text. */
+	--txt-1: {color1}; /* main text color. */
+	--txt-2: {color3}; /* color of secondary text like channel list. */
+	--txt-3: {color2}; /* color of muted text. */
+	/* mention/ping and message colors */
+    --red: {color1};
+    --green: {color2};
+    --yellow: {color3};
+    --blue: {color4};
+    --purple: {color5};
+    --aqua: {color1};
+}}

@@ -1,0 +1,75 @@
+From d686877d04917abe21c05ae3af01b32a28c9871e Mon Sep 17 00:00:00 2001
+From: Patrick McLaughlin <me@patmclaughl.in>
+Date: Sun, 7 Aug 2022 10:43:04 -0400
+Subject: [PATCH] update pywal patches
+
+---
+ pywal/backends/wal.py | 10 +---------
+ pywal/wallpaper.py    | 30 ++----------------------------
+ 2 files changed, 3 insertions(+), 37 deletions(-)
+
+diff --git a/pywal/backends/wal.py b/pywal/backends/wal.py
+index f05db41..738cd6b 100644
+--- a/pywal/backends/wal.py
++++ b/pywal/backends/wal.py
+@@ -21,15 +21,7 @@ def imagemagick(color_count, img, magick_command):
+ 
+ def has_im():
+     """Check to see if the user has im installed."""
+-    if shutil.which("magick"):
+-        return ["magick", "convert"]
+-
+-    if shutil.which("convert"):
+-        return ["convert"]
+-
+-    logging.error("Imagemagick wasn't found on your system.")
+-    logging.error("Try another backend. (wal --backend)")
+-    sys.exit(1)
++    return ["@convert@"]
+ 
+ 
+ def gen_colors(img):
+diff --git a/pywal/wallpaper.py b/pywal/wallpaper.py
+index 6a50627..55eb30a 100644
+--- a/pywal/wallpaper.py
++++ b/pywal/wallpaper.py
+@@ -59,34 +59,8 @@ def xfconf(img):
+ 
+ def set_wm_wallpaper(img):
+     """Set the wallpaper for non desktop environments."""
+-    if shutil.which("feh"):
+-        util.disown(["feh", "--bg-fill", img])
+-
+-    elif shutil.which("xwallpaper"):
+-        util.disown(["xwallpaper", "--zoom", img])
+-
+-    elif shutil.which("hsetroot"):
+-        util.disown(["hsetroot", "-fill", img])
+-
+-    elif shutil.which("nitrogen"):
+-        util.disown(["nitrogen", "--set-zoom-fill", img])
+-
+-    elif shutil.which("bgs"):
+-        util.disown(["bgs", "-z", img])
+-
+-    elif shutil.which("hsetroot"):
+-        util.disown(["hsetroot", "-fill", img])
+-
+-    elif shutil.which("habak"):
+-        util.disown(["habak", "-mS", img])
+-
+-    elif shutil.which("display"):
+-        util.disown(["display", "-backdrop", "-window", "root", img])
+-
+-    else:
+-        logging.error("No wallpaper setter found.")
+-        return
+-
++    return util.disown(["@feh@", "--bg-fill", img])
++    
+ 
+ def set_desktop_wallpaper(desktop, img):
+     """Set the wallpaper for the desktop environment."""
+-- 
+2.37.1
+

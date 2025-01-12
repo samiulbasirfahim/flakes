@@ -1,8 +1,12 @@
 # install
 rename the disk name in lib/disko.nix
+
 sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko lib/disko.nix
+
 sudo mkdir -p /mnt/etc/nixos
+
 sudo cp -r * /mnt/etc/nixos/
+
 sudo nixos-install --no-root-password --root /mnt --flake .#hollow
 
 

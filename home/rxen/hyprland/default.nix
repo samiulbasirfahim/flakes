@@ -2,25 +2,16 @@
 let
   mod = "Super";
   workspaces = builtins.concatLists (builtins.genList
-    (
-      x:
-      let
-        ws =
-          let
-            c = (x + 1) / 10;
-          in
-          builtins.toString (x + 1 - (c * 10));
-      in
-      [
+    (x:
+      let ws = let c = (x + 1) / 10; in builtins.toString (x + 1 - (c * 10)); in [
         "${mod}, ${ws}, workspace, ${toString (x + 1)}"
         "${mod} SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-      ]
-    )
+      ])
     10);
 in
 {
 
-  stylix.targets.hyprpaper.enable = lib.mkForce false;
+  # stylix.targets.hyprpaper.enable = lib.mkForce false;
 
 
   home.persistence."/nix/persist/home/rxen".directories = [
@@ -33,6 +24,8 @@ in
       swww
       wl-clipboard
       cliphist
+      nemo
+      dolphin
     ];
 
   services.cliphist.enable = true;
@@ -47,12 +40,10 @@ in
           ", highrr, auto, 1"
         ];
 
-
         input = {
           kb_layout = "us";
           repeat_rate = 50;
           repeat_delay = 300;
-
           accel_profile = "flat";
           follow_mouse = 1;
           sensitivity = 0;
@@ -63,8 +54,8 @@ in
           gaps_in = 6;
           gaps_out = 12;
           border_size = 2;
-          "col.active_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base08})";
-          "col.inactive_border" = lib.mkForce "rgba(${config.lib.stylix.colors.base00}00)";
+          # "col.active_border" = lib.mkForce "rgb(${config.lib.stylix.colors.base08})";
+          # "col.inactive_border" = lib.mkForce "rgba(${config.lib.stylix.colors.base00}00)";
           allow_tearing = true;
           resize_on_border = true;
           layout = "master";
@@ -116,7 +107,7 @@ in
         "$mod" = "${mod}";
 
         bind = [
-          "$mod, Return, exec, footclient"
+          "$mod, Return, exec, kitty -1"
           "$mod, Q, killactive"
           "$mod, F, fullscreen"
           "$mod, Space, togglefloating"
@@ -139,16 +130,12 @@ in
         ];
 
         exec-once = [
-          "hyprctl setcursor ${config.stylix.cursor.name} ${toString config.stylix.cursor.size}"
+          "hyprctl setcursor ${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}"
           "swww-daemon"
-          # "wl-paste --type text --watch cliphist store" # Stores only text data
-          # "wl-paste --type image --watch cliphist store" # Stores only image data
         ];
       };
-
     };
 
 
-  programs.firefox.enable = true;
   home.sessionVariables.NIXOS_OZONE_WL = "1";
 }

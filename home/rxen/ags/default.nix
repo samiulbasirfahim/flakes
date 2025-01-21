@@ -12,7 +12,18 @@
     # configDir = ./config;
 
     extraPackages = with pkgs; [
-
-    ];
+      gtk3
+      gtk4
+    ] ++ (with inputs.ags.packages.${pkgs.system}; [
+      hyprland
+      astal3
+      mpris
+      # network
+      notifd
+      # powerprofiles
+      tray
+      wireplumber
+      inputs.astal.packages.${pkgs.system}.default
+    ]);
   };
 }

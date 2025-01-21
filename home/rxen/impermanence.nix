@@ -9,7 +9,6 @@
       "vids"
       "pix"
       "Downloads"
-      ".mozilla"
       ".ssh"
     ];
     files = [

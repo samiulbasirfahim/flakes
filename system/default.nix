@@ -4,7 +4,7 @@
     ./audio.nix
     ./user.nix
     ./impermanence.nix
-    ./stylix.nix
+    # ./stylix.nix
   ];
 
   environment.systemPackages = with pkgs;[
@@ -14,6 +14,7 @@
     neovim
     unzip
     nixd
+    libnotify
   ];
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
@@ -21,6 +22,12 @@
   programs.hyprland.enable = true;
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+    inputs.nur.overlays.default
+    (self: super: { })
+  ];
+
+
 
   nix = {
     gc = {
@@ -33,6 +40,8 @@
     };
   };
 
+
+  services.gvfs.enable = true;
   programs.nano.enable = false;
   powerManagement = {
     enable = true;

@@ -8,8 +8,14 @@
     home-manager.url = "github:nix-community/home-manager";
     stylix.url = "github:danth/stylix";
     ags.url = "github:aylur/ags";
+    astal.url = "github:aylur/astal";
+    nur.url = "github:nix-community/NUR";
     dotfiles = {
       url = "github:samiulbasirfahim/Dotfiles";
+      flake = false;
+    };
+    hardened-firefox = {
+      url = "github:arkenfox/user.js";
       flake = false;
     };
   };
@@ -23,7 +29,9 @@
       packages = nixpkgs.legacyPackages.${system};
       nixosConfigurations.hollow = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs self; };
-        modules = [ ./hosts/hollow ];
+        modules = [
+          ./hosts/hollow
+        ];
       };
     };
 }

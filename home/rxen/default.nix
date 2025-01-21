@@ -1,10 +1,13 @@
-{ inputs, self, user, ... }: {
+{ user, ... }: {
   imports = [
     ./hyprland
-    ./foot
+    ./kitty
     ./neovim
     ./btop
     ./ags
+    ./zsh
+    ./firefox
+    ./theme
     ./impermanence.nix
     ./git.nix
   ];

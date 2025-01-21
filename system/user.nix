@@ -1,4 +1,4 @@
-{ inputs, self, pkgs, ... }:
+{ inputs, self, pkgs, lib, config, ... }:
 let
   user = "rxen";
 in
@@ -18,6 +18,8 @@ in
 
   home-manager = {
     backupFileExtension = "backup";
+    useUserPackages = true;
+    useGlobalPkgs = true;
     extraSpecialArgs = { inherit inputs user self; };
     users."${user}" = import ../home/${user};
   };

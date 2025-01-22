@@ -1,9 +1,8 @@
 { pkgs, inputs, ... }: {
 
-  home.persistence."/nix/persist/home/rxen".directories = [
-    ".mozilla"
-    ".cache/mozilla"
-  ];
+  # home.persistence."/nix/persist/home/rxen".directories = [
+  #   ".mozilla"
+  # ];
 
 
   programs.firefox = {
@@ -53,8 +52,8 @@
         default = "DuckDuckGo";
         order = [ "DuckDuckGo" ];
       };
-      # userChrome = builtins.readFile (./userChrome.css);
-      # userContent = builtins.readFile (./userContent.css);
+      userChrome = builtins.readFile (./userChrome.css);
+      userContent = builtins.readFile (./userContent.css);
       settings = {
         "browser.in-content.dark-mode" = true;
         "privacy.clearOnShutdown_v2.historyFormDataAndDownloads" = false;

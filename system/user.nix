@@ -13,11 +13,12 @@ in
     initialPassword = "f4h1m";
   };
 
+
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
 
   home-manager = {
-    backupFileExtension = "backup";
+    backupFileExtension = "bkp";
     useUserPackages = true;
     useGlobalPkgs = true;
     extraSpecialArgs = { inherit inputs user self; };

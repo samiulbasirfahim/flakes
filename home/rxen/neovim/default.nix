@@ -19,11 +19,13 @@
       cargo
       nodejs
       nixd
+      llvmPackages_19.clang-tools
+      cppcheck
     ];
 
-  home.persistence."/nix/persist/home/rxen".directories = [
-    ".config/nvim/"
-    ".local/share/nvim"
-    ".local/state/nvim"
-  ];
+  # home.persistence."/nix/persist/home/rxen".directories = [
+  #   ".config/nvim/"
+  #   ".local/share/nvim"
+  #   ".local/state/nvim"
+  # ];
 }

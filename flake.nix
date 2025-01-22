@@ -8,6 +8,7 @@
     home-manager.url = "github:nix-community/home-manager";
     stylix.url = "github:danth/stylix";
     ags.url = "github:aylur/ags";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     astal.url = "github:aylur/astal";
     nur.url = "github:nix-community/NUR";
     dotfiles = {

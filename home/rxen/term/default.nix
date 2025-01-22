@@ -1,24 +1,34 @@
-{ inputs, ... }:
+{ config, ... }:
 {
 
-  programs.kitty = {
+  programs.foot = {
     enable = true;
+    server.enable = true;
+
     settings = {
-      confirm_os_window_close = 0;
-      placement_strategy = "top";
-      enable_audio_bell = false;
-      include = "~/.cache/wal/colors-kitty.conf";
-      font_size = "16.0";
-      adjust_line_height = "3";
-      cursor_blink_interval = "0";
-      font_family = "Rxen Sans";
-      bold_font = "auto";
-      italic_font = "auto";
-      bold_italic_font = "auto";
-      background_opacity = "0.9";
-      cursor = "#82AAFF";
-      window_padding_width = "10";
-      enable_ligatures = "true";
+      main = {
+        include = "~/.cache/wal/colors-foot.ini";
+        term = "screen-256color";
+        font = "Rxen Sans:size=15";
+        horizontal-letter-offset = 0;
+        vertical-letter-offset = 0;
+        pad = "4x4 center";
+        selection-target = "clipboard";
+      };
+      url = {
+        protocols = "http, https, ftp, ftps, file, gemini, gopher";
+      };
+      colors = {
+        alpha = ".9";
+      };
+      cursor = {
+        style = "block";
+      };
+      key-bindings = { };
+      mouse.hide-when-typing = "yes";
+      tweak = {
+        sixel = "yes";
+      };
     };
   };
 
@@ -44,10 +54,10 @@
 
       preview = {
         image_filter = "lanczos3";
-        image_quality = 100;
+        image_quality = 90;
         tab_size = 1;
-        max_width = 1000;
-        max_height = 1500;
+        max_width = 600;
+        max_height = 900;
         cache_dir = "";
         ueberzug_scale = 1;
         ueberzug_offset = [

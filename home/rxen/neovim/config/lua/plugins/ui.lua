@@ -33,12 +33,9 @@ return {
           "MunifTanjim/nui.nvim",
         },
         opts = {
-          presets = {
-            inc_rename = true,
-            bottom_search = true,
-            command_palette = true,
-            long_message_to_split = true,
-          },
+            cmdline = {
+                view = "cmdline",
+            }
         },
       },
     },

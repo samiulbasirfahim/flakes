@@ -1,7 +1,7 @@
 { pkgs, ... }: {
-  home.persistence."/nix/persist/home/rxen".files = [
-    ".cache/zsh_history"
-  ];
+  # home.persistence."/nix/persist/home/rxen".files = [
+  #   ".cache/zsh_history"
+  # ];
 
   programs.zoxide = {
     enable = true;
@@ -15,7 +15,7 @@
     enable = true;
     autocd = true;
     enableCompletion = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     historySubstringSearch = {
       enable = true;

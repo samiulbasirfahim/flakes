@@ -1,13 +1,17 @@
 { user, ... }: {
   imports = [
     ./hyprland
-    ./kitty
+    ./term
     ./neovim
     ./btop
     ./ags
     ./zsh
     ./firefox
     ./theme
+    ./spotify
+    ./vscode
+    ./mpv
+    ./discord
     ./impermanence.nix
     ./git.nix
   ];

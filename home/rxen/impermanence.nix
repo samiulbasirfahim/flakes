@@ -9,7 +9,11 @@
       "vids"
       "pix"
       "Downloads"
+      ".mozilla"
       ".ssh"
+      ".local"
+      # ".config"
+      # ".cache"
     ];
     files = [
     ];
